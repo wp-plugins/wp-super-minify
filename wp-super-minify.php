@@ -3,7 +3,7 @@
 Plugin Name: WP Super Minify
 Plugin URI: https://github.com/dipakcg/wp-super-minify
 Description: This plugin combine and compress HTML, JavaScript and CSS files to improve page load speed.
-Version: 1.1
+Version: 1.2
 Author: Dipak C. Gajjar
 Author URI: http://dipakgajjar.com
 */
@@ -13,7 +13,7 @@ if (!defined('WPSMY_PLUGIN_VERSION')) {
     define('WPSMY_PLUGIN_VERSION', 'wpsmy_plugin_version');
 }
 if (!defined('WPSMY_PLUGIN_VERSION_NUM')) {
-    define('WPSMY_PLUGIN_VERSION_NUM', '1.1');
+    define('WPSMY_PLUGIN_VERSION_NUM', '1.2');
 }
 update_option(WPSMY_PLUGIN_VERSION, WPSMY_PLUGIN_VERSION_NUM);
 
@@ -99,6 +99,25 @@ function wpsmy_admin_options() {
 	</table>
 	</div>
 	<?php
+	echo '<hr style="margin-bottom: 2em;" />';
+    echo '<table cellspacing="0" cellpadding="0" class="news_section"> <tr>';
+    echo '<td width="50%" valign="top">';
+    echo '<h1>News & Updates from Dipak C. Gajjar</h1>';
+    echo '<div class="rss-widget">';
+     wp_widget_rss_output(array(
+          'url' => 'https://dipakgajjar.com/category/news/feed/?refresh='.rand(10,100).'',  // feed URL
+          'title' => 'News & Updates from Dipak C. Gajjar',
+          'items' => 3, // nubmer of posts to display
+          'show_summary' => 1,
+          'show_author' => 0,
+          'show_date' => 0
+     ));
+     echo '</div> <td width="5%"> &nbsp </td>';
+     echo '</td> <td valign="top">';
+     ?>
+     <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/dipakcgajjar" data-widget-id="547661367281729536">Tweets by @dipakcgajjar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<?php echo '</td> </tr> </table>';
 }
 
 // Make the default value of enable javascript and enable CSS to true on plugin activation
